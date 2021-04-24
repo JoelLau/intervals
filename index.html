@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="style.css" />
     <title>Intervals</title>
   </head>
-  <body class="flex-center-xy">
+  <body class="flex-center-xy text-center">
     <main class="controls">
-      <h2 id="clock-time" class="hero">00:00:00</h2>
+      <h2 id="clock-time" class="hero">
+        <span id="clock-time__minutes" title="minutes">00</span
+        ><!--
+        -->:<!--
+        --><span id="clock-time__seconds" title="seconds">00</span>
+      </h2>
       <div id="btn-container" class="flex-space-evenly-x">
         <button id="start-btn" class="btn">Start</button>
         <button id="pause-btn" class="btn hidden">Pause</button>
