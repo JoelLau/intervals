@@ -1,0 +1,12 @@
+:root {
+  --raisin-black: #272838;
+  --orange-yellow-crayola: #ffd166;
+  --light-coral: #ff6b6c;
+  --slate-gray: #738290;
+  --cultured: #f9f8f8;
+}
+
+body {
+  background: var(--cultured);
+  color: var(--raisin-black);
+}
