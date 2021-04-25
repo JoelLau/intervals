@@ -101,12 +101,6 @@ small {
   justify-content: center;
 }
 
-.flex-center-x {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-}
-
 .stack-horizontal * ~ * {
   margin-left: 1em;
 }

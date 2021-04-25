@@ -11,12 +11,22 @@ const appState = {
    * whether or not the timer is currently running
    */
   isRunning: false,
+
+  /**
+   * number of seconds that have passed
+   */
+  secondsElapsed: 0,
+
+  /**
+   * call back for setInterval / clearInterval
+   */
+  interval: null,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("started");
 
-  setSchedule(getScheduleAtIndex(appState.scheduleIndex));
+  updateTimer();
   addButtonEventListeners();
 });
 
@@ -72,21 +82,36 @@ function setSchedule(schedule) {
   console.log(`setting schedule to ${JSON.stringify(schedule)}`);
   const { name, duration } = schedule;
   setScheduleName(name);
-  setTimer(duration);
+
+  console.log(duration);
+  console.log(typeof duration);
+
+  console.log(appState.secondsElapsed);
+  console.log(typeof appState.secondsElapsed);
+  setTimer(duration - appState.secondsElapsed);
 }
 
 function startTimer() {
   console.log("timer started");
   appState.isRunning = true;
+  appState.interval = setInterval(() => {
+    appState.secondsElapsed++;
+    updateTimer();
+  }, 1000);
 }
 
 function stopTimer() {
   console.log("timer stopped");
   appState.isRunning = false;
+  clearInterval = clearInterval(appState.interval);
 }
 
 function resetTimer() {
   console.log("timer reset");
+}
+
+function updateTimer() {
+  setSchedule(getScheduleAtIndex(appState.scheduleIndex));
 }
 
 function revealElement(element) {
@@ -103,7 +128,7 @@ function setScheduleName(name) {
 
 function setTimer(duration) {
   console.log(`setting timer to ${duration}`);
-  const minutes = duration / 60;
+  const minutes = Math.floor(duration / 60);
   const seconds = duration - minutes * 60;
 
   setTimerMinutes(minutes);
