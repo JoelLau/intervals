@@ -43,14 +43,14 @@ function addButtonEventListeners() {
   getPauseButton().addEventListener("click", () => {
     console.log("pause button clicked");
     stopTimer();
+    revealElement(getStartButton());
+    hideElement(getPauseButton());
+    hideElement(getResetButton());
   });
 
   getResetButton().addEventListener("click", () => {
     console.log("reset button clicked");
-    stopTimer();
-    revealElement(getStartButton());
-    hideElement(getPauseButton());
-    hideElement(getResetButton());
+    resetTimer();
   });
 }
 
@@ -97,6 +97,23 @@ function startTimer() {
   appState.interval = setInterval(() => {
     appState.secondsElapsed++;
     updateTimer();
+
+    const currentSchedule = getScheduleAtIndex(appState.scheduleIndex);
+
+    console.log(appState.secondsElapsed);
+    console.log(currentSchedule.duration);
+    if (appState.secondsElapsed === currentSchedule.duration + 1) {
+      alert("complete");
+      stopTimer();
+
+      revealElement(getStartButton());
+      hideElement(getPauseButton());
+      hideElement(getResetButton());
+
+      resetTimer();
+      appState.scheduleIndex++;
+      updateTimer();
+    }
   }, 1000);
 }
 
@@ -108,6 +125,8 @@ function stopTimer() {
 
 function resetTimer() {
   console.log("timer reset");
+  appState.secondsElapsed = 0;
+  updateTimer();
 }
 
 function updateTimer() {
