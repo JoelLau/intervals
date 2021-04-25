@@ -1,2 +1,2 @@
-# intervals
-simple pomodoro made with simple html, css, js
+# Intervals
+A simple pomodoro timer written in pure html, css and javascript
