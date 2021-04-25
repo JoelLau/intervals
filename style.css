@@ -95,6 +95,12 @@ small {
   align-items: center;
 }
 
+.flex-column-center-y {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
 .flex-center-x {
   display: flex;
   flex-flow: row nowrap;

@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="style.css" />
     <title>Intervals</title>
   </head>
-  <body class="flex-column-center-xy text-center">
-    <h3 id="schedule-name" class="no-margin"></h3>
-    <div class="flex-column-center-xy">
-      <h2 id="clock-time" class="hero">
-        <span id="clock-time__minutes" title="minutes">00</span
-        ><!--
-        -->:<!--
-        --><span id="clock-time__seconds" title="seconds">00</span>
-      </h2>
-      <div id="btn-container" class="flex-center-x stack-horizontal">
-        <button id="start-btn" class="btn">Start</button>
-        <button id="pause-btn" class="btn hidden">Pause</button>
-        <button id="reset-btn" class="btn hidden">Reset</button>
+  <body class="flex-column-center-y">
+    <main class="flex-column-center-xy text-center">
+      <h3 id="schedule-name" class="no-margin"></h3>
+      <div class="flex-column-center-xy">
+        <h2 id="clock-time" class="hero">
+          <span id="clock-time__minutes" title="minutes">00</span
+          ><!--
+          -->:<!--
+          --><span id="clock-time__seconds" title="seconds">00</span>
+        </h2>
+        <div id="btn-container" class="flex-center-x stack-horizontal">
+          <button id="start-btn" class="btn">Start</button>
+          <button id="pause-btn" class="btn hidden">Pause</button>
+          <button id="reset-btn" class="btn hidden">Reset</button>
+        </div>
       </div>
-    </div>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>
