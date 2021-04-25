@@ -15,6 +15,8 @@ const appState = {
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("started");
+
+  setSchedule(getScheduleAtIndex(appState.scheduleIndex));
   addButtonEventListeners();
 });
 
@@ -54,6 +56,25 @@ function getResetButton() {
   return document.getElementById("reset-btn");
 }
 
+function getScheduleName() {
+  return document.getElementById("schedule-name");
+}
+
+function getClockTimeMinutes() {
+  return document.getElementById("clock-time__minutes");
+}
+
+function getClockTimeSeconds() {
+  return document.getElementById("clock-time__seconds");
+}
+
+function setSchedule(schedule) {
+  console.log(`setting schedule to ${JSON.stringify(schedule)}`);
+  const { name, duration } = schedule;
+  setScheduleName(name);
+  setTimer(duration);
+}
+
 function startTimer() {
   console.log("timer started");
   appState.isRunning = true;
@@ -75,24 +96,49 @@ function hideElement(element) {
   element.classList.add("hidden");
 }
 
-function getCurrentSchedule(num) {
+function setScheduleName(name) {
+  console.log(`setting schedule name to ${name}`);
+  getScheduleName().innerText = name;
+}
+
+function setTimer(duration) {
+  console.log(`setting timer to ${duration}`);
+  const minutes = duration / 60;
+  const seconds = duration - minutes * 60;
+
+  setTimerMinutes(minutes);
+  setTimerSeconds(seconds);
+}
+
+function setTimerMinutes(minutes) {
+  console.log(`setting timer (minutes) to ${minutes}`);
+  getClockTimeMinutes().innerText = `${minutes}`.padStart(2, "0");
+}
+
+function setTimerSeconds(seconds) {
+  console.log(`setting timer (seconds) to ${seconds}`);
+  getClockTimeSeconds().innerText = `${seconds}`.padStart(2, "0");
+}
+
+function getScheduleAtIndex(index = appState.scheduleIndex) {
   const completeSchedule = getCompleteSchedule();
-  return completeSchedule[num % completeSchedule.length];
+  return completeSchedule[index % completeSchedule.length];
 }
 
 function getCompleteSchedule() {
   const scheduleWork = {
-    name: "work",
-    duration: 2500,
+    name: "Work",
+    duration: 15 * 60,
   };
 
   const scheduleShortBreak = {
-    name: "shortbreak",
-    duration: 500,
+    name: "Short Break",
+    duration: 5 * 60,
   };
 
   const scheduleLongBreak = {
-    duration: 1500,
+    name: "Long Break",
+    duration: 15 * 60,
   };
 
   return [
