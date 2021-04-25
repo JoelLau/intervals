@@ -1,4 +1,9 @@
 /**
+ * Version 0.0.1
+ * -------------
+ */
+
+/**
  * Global App State
  */
 const appState = {
